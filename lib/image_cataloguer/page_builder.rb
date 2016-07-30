@@ -11,12 +11,11 @@ module ImageCataloguer
     private
 
       def generate_index
-        # Create file using filepathbuilder
-        file = get_file("index")
-        
-        @images[0..10].each do |image|
-
+        links = get_makes.map do |make|
+          path = FilepathBuilder.get_path("make", make)
+          Link.new(make, path)
         end
+        html = TemplateWriter.write_template(@images[0..9])
       end
 
       def generate_make_pages
@@ -30,13 +29,27 @@ module ImageCataloguer
       def get_file(type, name = nil)
         # Get filepath.
         filepath = FilepathBuilder.get_path("index")
-        # Create file in memory from template. Possibly using TemplateWriter.
-        # Template writer will take the path to the template, as well as
+        html = TemplateWriter.write_template()
       end
 
       def initialize(images, output_folder)
         @images = images
         @output_folder = output_folder
       end
+
+      def get_makes
+        @images.inject([]) do |makes, image|
+          makes << image.make if !makes.include? image.make
+        end
+      end
+
+      def get_models
+        @images.inject([]) do |models, image|
+          models << image.model if !models.include? image.model
+        end
+      end
   end
 end
+
+# Given an array of images we need to decompose them into a list of models
+# which have makes and 
