@@ -1,0 +1,3 @@
+#!usr/bin/ruby
+
+$stdout.write "Hello World!"
