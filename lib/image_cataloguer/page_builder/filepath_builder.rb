@@ -1,42 +1,74 @@
 module ImageCataloguer
-    class PageBuilder::FilepathBuilder
+  class PageBuilder::FilepathBuilder
 
-      def self.get_path(type, make = nil, model = nil)
-        builder = new(type, make, model)
-        path = builder.build_path
-        builder.escape_path(path)
+    def self.get_path(output_folder, type, make = nil, model = nil)
+      builder = new(output_folder, type, make, model)
+      builder.build_path
+    end
+
+    def self.get_link_url(output_folder, type, make = nil, model = nil)
+      builder = new(output_folder, type, make, model)
+      builder.build_link
+    end
+
+    def build_path
+      case @type
+      when :index
+        index_path
+      when :make
+        make_path
+      when :model
+        model_path
+      end
+    end
+
+    def build_link
+      case @type
+      when :index
+        index_link
+      when :make
+        make_link
+      when :model
+        model_link
+      end
+    end
+
+    private
+
+      def initialize(output_folder, type, make = nil, model = nil)
+        @output_folder = output_folder
+        @type = type
+        @make = make
+        @model = model
+        check_arguments
       end
 
-      def build_path
+      def check_arguments
         case @type
-        when "index"
-          "index.html"
-        when "make"
+        when :index
+        when :make
           if @make.nil? || @make.empty?
             raise PageBuilder::FilepathBuilder::ArgumentError, "Make cannot be empty."
           end
-          "#{@make}/index.html"
-        when "model"
+        when :model
           if @make.nil? || @model.nil? || @make.empty? || @model.empty?
             raise PageBuilder::FilepathBuilder::ArgumentError, "Make and model cannot be empty."
           end
-          "#{@make}/#{@model}.html"
         else
           raise PageBuilder::FilepathBuilder::TypeError, "Incorrect type given."
         end
       end
 
-      def escape_path(path)
-        path.gsub(/\s/, "-").downcase
+      def index_path
+      "#{@output_folder}/index.html"
       end
 
-      private
+      def make_path
+        "#{@output_folder}/#{@make}/index.html"
+      end
 
-        def initialize(type, make = nil, model = nil)
-          @type = type
-          @make = make
-          @model = model
-        end
-    end
-
+      def model_path
+        "#{@output_folder}/#{@make}/#{@model}.html"
+      end
+  end
 end

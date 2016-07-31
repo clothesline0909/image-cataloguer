@@ -1,3 +1,5 @@
+require 'nokogiri'
+
 module ImageCataloguer
   class Image
 
@@ -12,6 +14,12 @@ module ImageCataloguer
 
     def to_HTML
       "<img src='#{@url}' alt='#{@model}'/>"
+    end
+
+    def self.to_HTML(images)
+      images.inject("") do |html, image|
+        html += image.to_HTML
+      end
     end
   end
 end

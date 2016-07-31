@@ -1,22 +1,22 @@
 require 'spec_helper'
 
 RSpec.describe ImageCataloguer::PageBuilder::TemplateWriter do
-  describe "write_template" do
+  describe "write_to_template" do
     context "with correct input" do
       before (:each) do
         @title = "New Title"
         @links = build_list(:link, 5)
-        @images = build_list(:image, 10)
+        @images = build_list(:nikon_d80_image, 10)
       end
 
       it "should not raise an error" do
         expect{
-          described_class.write_template(@title, @links, @images)
+          described_class.write_to_template(@title, @links, @images)
         }.to_not raise_error
       end
 
       it "should write the new values into the template" do
-        html = described_class.write_template(@title, @links, @images)
+        html = described_class.write_to_template(@title, @links, @images)
         doc = Nokogiri::HTML(html)
         expect(doc.css("title").first.text).to eq @title
         expect(doc.css("h1").first.text).to eq @title

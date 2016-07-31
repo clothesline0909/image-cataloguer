@@ -1,10 +1,21 @@
-require 'nokogiri'
-require 'open-uri'
-require 'active_support/core_ext/hash'
 require 'pry'
+require_relative 'lib/image_cataloguer'
 
-doc = Nokogiri::XML(open("http://take-home-test.herokuapp.com/api/v1/works.xml"))
+url = ARGV[0]
+output_dir = ARGV[1]
 
-data = doc.xpath("//work")
+# Check for null values
 
-binding.pry
+if url == nil || url.empty?
+  puts "URL not provided."
+  puts "Proper usage: ruby run.rb <url> <output-directory>"
+  puts "Please consult the README for more information."
+end
+
+if output_dir == nil || output_dir.empty?
+  puts "Output directory not provided."
+  puts "Proper usage: ruby run.rb <url> <output-directory>"
+  puts "Please consult the README for more information."
+end
+
+ImageCataloguer.generate_catalogue(url, output_dir)

@@ -11,5 +11,11 @@ module ImageCataloguer
     def to_HTML
       "<a href='#{@url}'>#{@name}</a>"
     end
+
+    def self.to_HTML(links)
+      links.inject("") do |html, link|
+        html += link.to_HTML
+      end
+    end
   end
 end
