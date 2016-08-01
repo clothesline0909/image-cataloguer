@@ -9,12 +9,14 @@ if url == nil || url.empty?
   puts "URL not provided."
   puts "Proper usage: ruby run.rb <url> <output-directory>"
   puts "Please consult the README for more information."
+  exit
 end
 
 if output_dir == nil || output_dir.empty?
   puts "Output directory not provided."
   puts "Proper usage: ruby run.rb <url> <output-directory>"
   puts "Please consult the README for more information."
+  exit
 end
 
 ImageCataloguer.generate_catalogue(url, output_dir)

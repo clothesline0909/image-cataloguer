@@ -20,7 +20,15 @@ It is recommended to use a Ruby version manager such as RVM. For information on 
 
 ## Installation
 
-To run this project you must have Ruby installed (tested version 2.3.0).
+To run this project you must have Ruby installed (tested version 2.3.0). To install this version using RVM use:
+
+    $ rvm install 2.3.0
+
+If already installed, you can switch versions using:
+
+    $ rvm use 2.3.0
+
+Clone the repository:
 
     $ git clone https://github.com/clarkbab/image-cataloguer.git
     $ cd image-cataloguer
@@ -29,7 +37,13 @@ To run this project you must have Ruby installed (tested version 2.3.0).
 
 ## Running
 
+To run the project you must provide a URL that points to a valid XML file containing EXIF image data. You must also specify the **absolute path** to the output folder. The output folder need not exist.
 
+    $ ruby run.rb <xml-url> <output-path>
+
+For example:
+
+    $ ruby run.rb http://www.example.com/exif.xml /home/johndoe/catalogue
 
 ## Testing
 
