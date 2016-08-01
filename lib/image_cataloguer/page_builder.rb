@@ -66,7 +66,7 @@ module ImageCataloguer
       end
 
       def validate_input
-        if @images.class != Array || @images.first.class != ImageCataloguer::Image
+        if @images.nil? || @images.class != Array || @images.first.class != ImageCataloguer::Image
           raise ImageCataloguer::PageBuilder::ArgumentError, "Input must be array of Images."
         end
       end

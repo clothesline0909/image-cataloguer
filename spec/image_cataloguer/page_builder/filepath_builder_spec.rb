@@ -2,12 +2,12 @@ require 'spec_helper'
 
 RSpec.describe ImageCataloguer::PageBuilder::FilepathBuilder do
   describe "get_path" do
-    before (:each) do
-      @image = build(:nikon_d80_image)
-      @output_folder = __dir__ + "/catalogue"
-    end
-
     context "with valid input" do
+      before (:each) do
+        @image = build(:nikon_d80_image)
+        @output_folder = __dir__ + "/catalogue"
+      end
+
       it "should not raise an error" do
         expect{
           described_class.get_path(@output_folder, :index)
@@ -31,6 +31,11 @@ RSpec.describe ImageCataloguer::PageBuilder::FilepathBuilder do
     end
 
     context "with invalid input" do
+      before (:each) do
+        @image = build(:nikon_d80_image)
+        @output_folder = __dir__ + "/catalogue"
+      end
+
       it "should raise an error on invalid type" do
         expect{
           described_class.get_path(@output_folder, :error)

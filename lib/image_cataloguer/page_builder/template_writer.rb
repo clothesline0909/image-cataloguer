@@ -42,6 +42,15 @@ module ImageCataloguer
         @links = links
         @images = images
         load_template
+        validate_input
+      end
+
+      def validate_input
+        if @links.nil? || @links.class != Array || @links.first.class != ImageCataloguer::Link
+          raise ImageCataloguer::PageBuilder::TemplateWriter::ArgumentError, "Input must be array of Links."
+        elsif @images.nil? || @images.class != Array || @images.first.class != ImageCataloguer::Image
+          raise ImageCataloguer::PageBuilder::TemplateWriter::ArgumentError, "Input must be array of Images."
+        end
       end
 
       def load_template

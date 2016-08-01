@@ -23,6 +23,12 @@ RSpec.describe ImageCataloguer::PageBuilder do
         expect(File.exist?("#{@output_folder}/index.html")).to eq true
       end
 
+      it "should have 3 links on the index page" do
+        described_class.build_pages(@images, @output_folder)
+        doc = Nokogiri::HTML(File.open("#{@output_folder}/index.html", "r"))
+        expect(doc.css("a").length).to eq 3
+      end
+
       it "should generate a make folder" do
         described_class.build_pages(@images, @output_folder)
         make = @images.first.make
@@ -33,6 +39,13 @@ RSpec.describe ImageCataloguer::PageBuilder do
         described_class.build_pages(@images, @output_folder)
         make = @images.first.make
         expect(File.exist?("#{@output_folder}/#{make}/index.html")).to eq true
+      end
+
+      it "should have 2 links on the make page" do
+        described_class.build_pages(@images, @output_folder)
+        make = @images.first.make
+        doc = Nokogiri::HTML(File.open("#{@output_folder}/#{make}/index.html", "r"))
+        expect(doc.css("a").length).to eq 2
       end
 
       it "should generate a model file" do

@@ -7,14 +7,7 @@ module ImageCataloguer
     end
 
     def build_path
-      case @type
-      when :index
-        index_path
-      when :make
-        make_path
-      when :model
-        model_path
-      end
+      self.send(@type)
     end
 
     private
@@ -24,35 +17,36 @@ module ImageCataloguer
         @type = type
         @make = make
         @model = model
-        check_arguments
+        validate_input
       end
 
-      def check_arguments
+      def validate_input
         case @type
-        when :index
         when :make
-          if @make.nil? || @make.empty?
+          if @make.nil? || @make.class != String || @make.empty?
             raise PageBuilder::FilepathBuilder::ArgumentError, "Make cannot be empty."
           end
         when :model
-          if @make.nil? || @model.nil? || @make.empty? || @model.empty?
+          if @make.nil? || @model.nil? || @make.class != String || @model.class != String || @make.empty? || @model.empty?
             raise PageBuilder::FilepathBuilder::ArgumentError, "Make and model cannot be empty."
           end
-        else
-          raise PageBuilder::FilepathBuilder::TypeError, "Incorrect type given."
         end
       end
 
-      def index_path
+      def index
       "#{@output_folder}/index.html"
       end
 
-      def make_path
+      def make
         "#{@output_folder}/#{@make}/index.html"
       end
 
-      def model_path
+      def model
         "#{@output_folder}/#{@make}/#{@model}.html"
+      end
+
+      def method_missing(*args)
+        raise PageBuilder::FilepathBuilder::TypeError, "Incorrect type given."
       end
   end
 end

@@ -31,5 +31,43 @@ RSpec.describe ImageCataloguer::PageBuilder::TemplateWriter do
         expect(doc.css("img").length).to eq @images.length
       end
     end
+
+    context "with incorrect input" do
+      before (:each) do
+        @title = "New Title"
+      end
+
+      it "should raise an error on non-array input" do
+        links = "error"
+        images = @images = build_list(:nikon_d80_image, 10)
+        expect{
+          described_class.write_to_template(@title, links, images)
+        }.to raise_error described_class::ArgumentError, "Input must be array of Links."
+      end
+
+      it "should raise an error on non-Link array input" do
+        links = ["error"]
+        images = @images = build_list(:nikon_d80_image, 10)
+        expect{
+          described_class.write_to_template(@title, links, images)
+        }.to raise_error described_class::ArgumentError, "Input must be array of Links."
+      end
+
+      it "should raise an error on non-array input" do
+        links = build_list(:link, 5)
+        images = "error"
+        expect{
+          described_class.write_to_template(@title, links, images)
+        }.to raise_error described_class::ArgumentError, "Input must be array of Images."
+      end
+
+      it "should raise an error on non-Link array input" do
+        links = build_list(:link, 5)
+        images = ["error"]
+        expect{
+          described_class.write_to_template(@title, links, images)
+        }.to raise_error described_class::ArgumentError, "Input must be array of Images."
+      end
+    end
   end
 end

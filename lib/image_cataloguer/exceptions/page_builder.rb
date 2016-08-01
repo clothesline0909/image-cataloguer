@@ -13,4 +13,9 @@ module ImageCataloguer
     class ArgumentError < StandardError
     end
   end
+
+  class PageBuilder::TemplateWriter
+    class ArgumentError < StandardError
+    end
+  end
 end
