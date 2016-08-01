@@ -62,6 +62,13 @@ module ImageCataloguer
       def initialize(images, output_folder)
         @images = images
         @output_folder = output_folder
+        validate_input
+      end
+
+      def validate_input
+        if @images.class != Array || @images.first.class != ImageCataloguer::Image
+          raise ImageCataloguer::PageBuilder::ArgumentError, "Input must be array of Images."
+        end
       end
 
       def index_links

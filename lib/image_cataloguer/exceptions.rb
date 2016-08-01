@@ -1,3 +1,2 @@
-require_relative 'exceptions/syntax_error'
-require_relative 'exceptions/type_error'
-require_relative 'exceptions/argument_error'
+require_relative 'exceptions/page_builder'
+require_relative 'exceptions/xml_parser'
