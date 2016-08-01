@@ -7,8 +7,8 @@ RSpec.describe ImageCataloguer::Link do
     end
 
     it "should convert the link to HTML" do
-      @link = @links.first
-      expect(@link.to_HTML).to eq "<a href='#{@link.url}'>#{@link.name}</a>"
+      link = @links.first
+      expect(link.to_HTML).to eq "<a href='#{link.url}'>#{link.name}</a>"
     end
 
     it "should convert an array of links to HTML" do
