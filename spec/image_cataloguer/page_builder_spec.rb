@@ -9,10 +9,15 @@ RSpec.describe ImageCataloguer::PageBuilder do
       @images += build_list(:panasonic_dmctz80_image, 3)
       @images += build_list(:leica_dlux_image, 3)
       @images += build_list(:leica_dlux3_image, 3)
-      @output_folder = File.expand_path(__dir__ + "/catalogue")
+      @folder_name = "temp"
+      @output_folder = File.expand_path(__dir__ + "/../#{@folder_name}")
     end
 
-    it "should do something" do
+    after (:each) do
+      FileUtils.rm_rf(@output_folder)
+    end
+
+    it "should generate an index file" do
       described_class.build_pages(@images, @output_folder)
     end
 
