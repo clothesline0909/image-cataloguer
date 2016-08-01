@@ -54,30 +54,45 @@ RSpec.describe ImageCataloguer::XMLParser do
       before (:each) do
         VCR.use_cassette "api_v1_works" do
           url = "http://take-home-test.herokuapp.com/api/v1/works.xml"
-          @works = XMLParser.parse_URL(url)
+          @works = described_class.parse_URL(url)
         end
       end
 
       it "should not raise an error" do
         expect{
-          XMLParser.build_images(@works)
+          described_class.build_images(@works)
         }.to_not raise_error
       end
 
       it "should return an array of images" do
-        images = XMLParser.build_images(@works)
+        images = described_class.build_images(@works)
         expect(images.first.class).to eq ImageCataloguer::Image
       end
 
       it "should filter out invalid images" do
         expect(@works.length).to eq 14
-        images = XMLParser.build_images(@works)
+        images = described_class.build_images(@works)
         expect(images.length).to eq 12
       end
 
       it "should return an array of length 12" do
-        images = XMLParser.build_images(@works)
+        images = described_class.build_images(@works)
         expect(images.length).to eq 12
+      end
+    end
+
+    context "when given an invalid array of XML nodes" do
+      before (:each) do
+        VCR.use_cassette "invalid_works" do
+          url = "http://www.xmlfiles.com/examples/cd_catalog.xml"
+          doc = Nokogiri::XML(open(url)) { |config| config.strict }
+          @works = doc.xpath("CATALOG/CD").to_a
+        end
+
+        it "should return an array of length 0" do
+          images = described_class.build_images(@works)
+          expect(images.length).to eq 0
+        end
       end
     end
   end
