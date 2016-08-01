@@ -6,11 +6,6 @@ module ImageCataloguer
       builder.build_path
     end
 
-    def self.get_link_url(output_folder, type, make = nil, model = nil)
-      builder = new(output_folder, type, make, model)
-      builder.build_link
-    end
-
     def build_path
       case @type
       when :index
@@ -19,17 +14,6 @@ module ImageCataloguer
         make_path
       when :model
         model_path
-      end
-    end
-
-    def build_link
-      case @type
-      when :index
-        index_link
-      when :make
-        make_link
-      when :model
-        model_link
       end
     end
 

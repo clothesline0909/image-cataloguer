@@ -46,10 +46,6 @@ module ImageCataloguer
       FilepathBuilder.get_path(@output_folder, type, make, model)
     end
 
-    def get_link_url(type, make = nil, model = nil)
-      FilepathBuilder.get_link_url(@output_folder, type, make, model)
-    end
-
     def get_links(type, make = nil, model = nil)
       case type
       when :index
@@ -70,17 +66,17 @@ module ImageCataloguer
 
       def index_links
         images_by_make.keys.inject([]) do |links, make|
-          url = get_link_url(:make, make)
+          url = get_path(:make, make)
           links << Link.new(make, url)
         end
       end
 
       def make_links(make)
-        url = get_link_url(:index)
+        url = get_path(:index)
         links = [Link.new("Back to Index", url)]
         images_by_model.keys.inject(links) do |links, model|
           if make == get_make(model)
-            url = get_link_url(:model, make, model)
+            url = get_path(:model, make, model)
             links << Link.new(model, url)
           end
           links
@@ -88,9 +84,9 @@ module ImageCataloguer
       end
 
       def model_links(make)
-        url = get_link_url(:index)
+        url = get_path(:index)
         links = [Link.new("Back to Index", url)]
-        url = get_link_url(:make, make)
+        url = get_path(:make, make)
         links << Link.new(make, url)
       end
 

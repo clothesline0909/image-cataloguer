@@ -30,3 +30,43 @@
     [Cassette: 'invalid_xml'] uri (matched): current request [get http://www.example.com/] vs [get http://www.example.com/]
   [Cassette: 'invalid_xml'] Found matching interaction for [get http://www.example.com/] at index 0: [200 "<!doctype html>\n<html>\n<head>\n    <title>Example Domain</title>\n\n    <meta chars"]
 [webmock] Identified request type (stubbed_by_vcr) for [get http://www.example.com/]
+[Cassette: 'api_v1_works'] Initialized with options: {:record=>:once, :match_requests_on=>[:method, :uri], :allow_unused_http_interactions=>true, :serialize_with=>:yaml, :persist_with=>:file_system}
+[webmock] Handling request: [get http://take-home-test.herokuapp.com/api/v1/works.xml] (disabled: false)
+  [Cassette: 'api_v1_works'] Initialized HTTPInteractionList with request matchers [:method, :uri] and 1 interaction(s): { [get http://take-home-test.herokuapp.com/api/v1/works.xml] => [200 "<?xml version=\"1.0\"?>\n<works>\n  <work>\n    <id>31820</id>\n    <filename>162042.j"] }
+  [Cassette: 'api_v1_works'] Checking if [get http://take-home-test.herokuapp.com/api/v1/works.xml] matches [get http://take-home-test.herokuapp.com/api/v1/works.xml] using [:method, :uri]
+    [Cassette: 'api_v1_works'] method (matched): current request [get http://take-home-test.herokuapp.com/api/v1/works.xml] vs [get http://take-home-test.herokuapp.com/api/v1/works.xml]
+    [Cassette: 'api_v1_works'] uri (matched): current request [get http://take-home-test.herokuapp.com/api/v1/works.xml] vs [get http://take-home-test.herokuapp.com/api/v1/works.xml]
+  [Cassette: 'api_v1_works'] Found matching interaction for [get http://take-home-test.herokuapp.com/api/v1/works.xml] at index 0: [200 "<?xml version=\"1.0\"?>\n<works>\n  <work>\n    <id>31820</id>\n    <filename>162042.j"]
+[webmock] Identified request type (stubbed_by_vcr) for [get http://take-home-test.herokuapp.com/api/v1/works.xml]
+[Cassette: 'api_v1_works'] Initialized with options: {:record=>:once, :match_requests_on=>[:method, :uri], :allow_unused_http_interactions=>true, :serialize_with=>:yaml, :persist_with=>:file_system}
+[webmock] Handling request: [get http://take-home-test.herokuapp.com/api/v1/works.xml] (disabled: false)
+  [Cassette: 'api_v1_works'] Initialized HTTPInteractionList with request matchers [:method, :uri] and 1 interaction(s): { [get http://take-home-test.herokuapp.com/api/v1/works.xml] => [200 "<?xml version=\"1.0\"?>\n<works>\n  <work>\n    <id>31820</id>\n    <filename>162042.j"] }
+  [Cassette: 'api_v1_works'] Checking if [get http://take-home-test.herokuapp.com/api/v1/works.xml] matches [get http://take-home-test.herokuapp.com/api/v1/works.xml] using [:method, :uri]
+    [Cassette: 'api_v1_works'] method (matched): current request [get http://take-home-test.herokuapp.com/api/v1/works.xml] vs [get http://take-home-test.herokuapp.com/api/v1/works.xml]
+    [Cassette: 'api_v1_works'] uri (matched): current request [get http://take-home-test.herokuapp.com/api/v1/works.xml] vs [get http://take-home-test.herokuapp.com/api/v1/works.xml]
+  [Cassette: 'api_v1_works'] Found matching interaction for [get http://take-home-test.herokuapp.com/api/v1/works.xml] at index 0: [200 "<?xml version=\"1.0\"?>\n<works>\n  <work>\n    <id>31820</id>\n    <filename>162042.j"]
+[webmock] Identified request type (stubbed_by_vcr) for [get http://take-home-test.herokuapp.com/api/v1/works.xml]
+[Cassette: 'api_v1_works'] Initialized with options: {:record=>:once, :match_requests_on=>[:method, :uri], :allow_unused_http_interactions=>true, :serialize_with=>:yaml, :persist_with=>:file_system}
+[webmock] Handling request: [get http://take-home-test.herokuapp.com/api/v1/works.xml] (disabled: false)
+  [Cassette: 'api_v1_works'] Initialized HTTPInteractionList with request matchers [:method, :uri] and 1 interaction(s): { [get http://take-home-test.herokuapp.com/api/v1/works.xml] => [200 "<?xml version=\"1.0\"?>\n<works>\n  <work>\n    <id>31820</id>\n    <filename>162042.j"] }
+  [Cassette: 'api_v1_works'] Checking if [get http://take-home-test.herokuapp.com/api/v1/works.xml] matches [get http://take-home-test.herokuapp.com/api/v1/works.xml] using [:method, :uri]
+    [Cassette: 'api_v1_works'] method (matched): current request [get http://take-home-test.herokuapp.com/api/v1/works.xml] vs [get http://take-home-test.herokuapp.com/api/v1/works.xml]
+    [Cassette: 'api_v1_works'] uri (matched): current request [get http://take-home-test.herokuapp.com/api/v1/works.xml] vs [get http://take-home-test.herokuapp.com/api/v1/works.xml]
+  [Cassette: 'api_v1_works'] Found matching interaction for [get http://take-home-test.herokuapp.com/api/v1/works.xml] at index 0: [200 "<?xml version=\"1.0\"?>\n<works>\n  <work>\n    <id>31820</id>\n    <filename>162042.j"]
+[webmock] Identified request type (stubbed_by_vcr) for [get http://take-home-test.herokuapp.com/api/v1/works.xml]
+[Cassette: 'api_v1_works'] Initialized with options: {:record=>:once, :match_requests_on=>[:method, :uri], :allow_unused_http_interactions=>true, :serialize_with=>:yaml, :persist_with=>:file_system}
+[webmock] Handling request: [get http://take-home-test.herokuapp.com/api/v1/works.xml] (disabled: false)
+  [Cassette: 'api_v1_works'] Initialized HTTPInteractionList with request matchers [:method, :uri] and 1 interaction(s): { [get http://take-home-test.herokuapp.com/api/v1/works.xml] => [200 "<?xml version=\"1.0\"?>\n<works>\n  <work>\n    <id>31820</id>\n    <filename>162042.j"] }
+  [Cassette: 'api_v1_works'] Checking if [get http://take-home-test.herokuapp.com/api/v1/works.xml] matches [get http://take-home-test.herokuapp.com/api/v1/works.xml] using [:method, :uri]
+    [Cassette: 'api_v1_works'] method (matched): current request [get http://take-home-test.herokuapp.com/api/v1/works.xml] vs [get http://take-home-test.herokuapp.com/api/v1/works.xml]
+    [Cassette: 'api_v1_works'] uri (matched): current request [get http://take-home-test.herokuapp.com/api/v1/works.xml] vs [get http://take-home-test.herokuapp.com/api/v1/works.xml]
+  [Cassette: 'api_v1_works'] Found matching interaction for [get http://take-home-test.herokuapp.com/api/v1/works.xml] at index 0: [200 "<?xml version=\"1.0\"?>\n<works>\n  <work>\n    <id>31820</id>\n    <filename>162042.j"]
+[webmock] Identified request type (stubbed_by_vcr) for [get http://take-home-test.herokuapp.com/api/v1/works.xml]
+[Cassette: 'invalid_works'] Initialized with options: {:record=>:once, :match_requests_on=>[:method, :uri], :allow_unused_http_interactions=>true, :serialize_with=>:yaml, :persist_with=>:file_system}
+[webmock] Handling request: [get http://www.xmlfiles.com/examples/cd_catalog.xml] (disabled: false)
+  [Cassette: 'invalid_works'] Initialized HTTPInteractionList with request matchers [:method, :uri] and 1 interaction(s): { [get http://www.xmlfiles.com/examples/cd_catalog.xml] => [200 "<?xml version=\"1.0\" encoding=\"ISO8859-1\" ?>\r\n<CATALOG>\r\n  <CD>\r\n    <TITLE>Empir"] }
+  [Cassette: 'invalid_works'] Checking if [get http://www.xmlfiles.com/examples/cd_catalog.xml] matches [get http://www.xmlfiles.com/examples/cd_catalog.xml] using [:method, :uri]
+    [Cassette: 'invalid_works'] method (matched): current request [get http://www.xmlfiles.com/examples/cd_catalog.xml] vs [get http://www.xmlfiles.com/examples/cd_catalog.xml]
+    [Cassette: 'invalid_works'] uri (matched): current request [get http://www.xmlfiles.com/examples/cd_catalog.xml] vs [get http://www.xmlfiles.com/examples/cd_catalog.xml]
+  [Cassette: 'invalid_works'] Found matching interaction for [get http://www.xmlfiles.com/examples/cd_catalog.xml] at index 0: [200 "<?xml version=\"1.0\" encoding=\"ISO8859-1\" ?>\r\n<CATALOG>\r\n  <CD>\r\n    <TITLE>Empir"]
+[webmock] Identified request type (stubbed_by_vcr) for [get http://www.xmlfiles.com/examples/cd_catalog.xml]

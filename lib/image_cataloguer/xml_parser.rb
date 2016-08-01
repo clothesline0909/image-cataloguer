@@ -12,6 +12,7 @@ module ImageCataloguer
     end
 
     def self.build_images(works)
+      filter_invalid_works(works)
       works.map do |work|
         Image.new(work.css("id").first.text,
           work.css("make").first.text,
@@ -20,22 +21,21 @@ module ImageCataloguer
       end
     end
 
+    def self.filter_invalid_works(works)
+      works.delete_if do |work|
+        work.css("id").first == nil || work.css("make").first == nil || 
+          work.css("model").first == nil || work.css("url[type='small']").first == nil
+      end
+    end
+
     def parse_xml
       works = @doc.xpath("works/work").to_a
-      filter_invalid_works(works)
     end
 
     private
 
       def initialize(doc)
         @doc = doc
-      end
-
-      def filter_invalid_works(works)
-        works.delete_if do |work|
-          work.css("id").first == nil || work.css("make").first == nil || 
-            work.css("model").first == nil || work.css("url[type='small']").first == nil
-        end
       end
   end
 end

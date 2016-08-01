@@ -1,4 +1,3 @@
-require 'pry'
 require_relative 'lib/image_cataloguer'
 
 url = ARGV[0]
